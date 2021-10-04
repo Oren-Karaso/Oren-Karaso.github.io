@@ -1,0 +1,79 @@
+@import "../../styles/setup/functions";
+@import "../../styles/setup/variables";
+@import "../../styles/setup/typography";
+
+.app-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    font-family: Grandstander, sans-serif;
+    font-size: rem(25px);
+    height: rem(80px);
+    width: 100%;
+    box-shadow: 0px 3px 3px 1px;
+    background-color: $clr5;
+    color: $clr4;
+
+    .app-logo {
+        display: flex;
+        img {
+            height: rem(48px);
+            margin-left: rem(10px);
+        }
+
+        .logo-name {
+            margin-left: rem(5px);
+
+            span {
+                color: $clr6;
+            }
+        }
+    }
+
+    .navbar-links {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        color: $clr1;
+        cursor: pointer;
+        list-style-type: none;
+
+        *:first-child {
+            margin-right: rem(8px);
+        }
+
+        .navbar-link {
+            transition: transform 0.2s;
+            margin-left: rem(-15px);
+
+            :hover {
+                padding-bottom: 7px;
+                border-bottom: 3px solid $clr3;
+                transform: scale(1.2);
+            }
+
+            a {
+                height: 100%;
+                text-decoration: none;
+
+                :hover {
+                    border-bottom: unset;
+                }
+
+                :active {
+                    border-bottom: 3px solid $clr3; //to fix
+                }
+
+                img {
+                    max-height: rem(48px);
+
+                    // [title]:hover:after {
+                    //     content: attr(title);
+                    //     border-radius: 7px;
+                    // }
+                }
+            }
+        }
+    }
+}

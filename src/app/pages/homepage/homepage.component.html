@@ -1,0 +1,17 @@
+<section class="hompage-main">
+    <div class="acount-details">
+        <h2 class="user-greet">Welcome back {{ loggedInUser.name }}!</h2>
+        <div class="user-coing-wrapper">
+            <h2 class="user-coins">In your wallet: {{ loggedInUser.coins }}
+            </h2>
+            <img src="../../../assets/icons/bitcoin.png" alt="" class="bitcoin">
+        </div>
+        <div class="transaction-wrapper" *ngIf="loggedInUser.moves.length !== 0">
+            <h2 class="user-moves">Your last transactions: </h2>
+            <h2 class="user-transactions" *ngFor="let transaction of loggedInUser.moves">
+                {{ transaction }}
+            </h2>
+        </div>
+        <img [src]="loggedInUser.image" alt="user-image" class="user-img">
+    </div>
+</section>
