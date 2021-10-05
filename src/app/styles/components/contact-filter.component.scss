@@ -1,0 +1,12 @@
+@import "../../styles/setup/variables";
+
+.contact-filter-main {
+    display: flex;
+
+    .filter-contacts {
+        margin: 10px;
+        border-radius: 10px;
+        min-width: 250px;
+        min-height: 25px;
+    }
+}
