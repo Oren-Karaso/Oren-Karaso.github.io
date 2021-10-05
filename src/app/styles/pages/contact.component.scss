@@ -1,0 +1,12 @@
+.contact-main {
+    .top-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .add-contact {
+            height: 48px;
+            cursor: pointer;
+        }
+    }
+}
