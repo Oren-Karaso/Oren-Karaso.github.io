@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
@@ -7,10 +8,28 @@ import { ContactService } from 'src/app/services/contact.service';
   styleUrls: ['../../styles/components/contact-filter.component.scss']
 })
 export class ContactFilterComponent implements OnInit {
+  searchForm!: FormGroup;
 
   constructor(private contactService: ContactService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.searchForm = new FormGroup({
+      'name': new FormControl(null)
+    });
   }
 
+  onSubmit() {
+    if (this.searchForm.value) {
+      console.log(this.searchForm.get('name')!.value);
+      this.contactService.loadContacts(this.searchForm.get('name')!.value);
+    }
+  }
+
+  onKeyPress(event: any) {
+    if (this.searchForm.value && this.searchForm.value !== '') {
+      this.contactService.loadContacts(this.searchForm.get('name')!.value);
+    } else {
+      this.contactService.loadContacts(this.searchForm.get('name')!.value);
+    }
+  }
 }

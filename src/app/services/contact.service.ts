@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, BehaviorSubject } from 'rxjs';
+import { Observable, of, BehaviorSubject, observable, Subject } from 'rxjs';
 import { Contact } from '../modules/contact.model';
 
 const CONTACTS = [
@@ -143,22 +143,23 @@ const CONTACTS = [
   providedIn: 'root'
 })
 export class ContactService {
+  contactsChanged = new Subject<Contact[]>();
 
   //mock the server
   private _contactsDb: Contact[] = CONTACTS;
 
-  private _contacts$ = new BehaviorSubject<Contact[]>([])
-  public contacts$ = this._contacts$.asObservable()
+  private _contacts$ = new BehaviorSubject<Contact[]>([]);
+  public contacts$ = this._contacts$.asObservable();
+
 
   constructor() {
   }
 
-  public loadContacts() {
+  public loadContacts(name?: string) {
     let contacts = this._contactsDb;
-    // if (filterBy && filterBy.term) {
-    //   contacts = this._filter(contacts, filterBy.term)
-    // }
-    // this._contacts$.next(this._sort(contacts))
+    if (name && name !== '') contacts = this._filter(contacts, name)
+    // this._contacts$.next(this._sort(contacts));
+    this.contactsChanged.next(contacts);
     return contacts;
   }
 
@@ -214,11 +215,12 @@ export class ContactService {
   }
 
   private _filter(contacts: Contact[], term: string) {
-    term = term.toLocaleLowerCase()
+    term = term.toLowerCase();
     return contacts.filter(contact => {
-      return contact.name.toLocaleLowerCase().includes(term) ||
-        contact.phone.toLocaleLowerCase().includes(term) ||
-        contact.email.toLocaleLowerCase().includes(term)
+      return contact.name.toLowerCase().includes(term); 
+      // return contact.name.toLocaleLowerCase().includes(term) ||
+      //   contact.phone.toLocaleLowerCase().includes(term) ||
+      //   contact.email.toLocaleLowerCase().includes(term)
     })
   }
 }

@@ -9,6 +9,7 @@ export class UserService {
     name: 'Ochoa Hyde',
     coins: 100,
     moves: [],
+    image: 'https://robohash.org/Ochoa-Hyde.png?set=set5'
   }
 
   constructor() { }

@@ -10,21 +10,27 @@ import { ContactService } from 'src/app/services/contact.service';
 })
 export class ContactListComponent implements OnInit, OnDestroy {
   contactList: Contact[] = [];
-  subscription: Subscription = new Subscription;
+  subscription = new Subscription;
+  contactsChangedSub = new Subscription;
 
-  constructor(private contactListService: ContactService) {}
+  constructor(private contactListService: ContactService) { }
 
 
   ngOnInit() {
-    this.subscription = this.contactListService.contacts$.subscribe(
+    this.contactsChangedSub = this.contactListService.contactsChanged.subscribe(
       (contactList: Contact[]) => {
         this.contactList = contactList;
       });
-      this.contactList = this.contactListService.loadContacts();
+    // this.subscription = this.contactListService.contacts$.subscribe(
+    //   (contactList: Contact[]) => {
+    //     this.contactList = contactList;
+    //   });
+    this.contactList = this.contactListService.loadContacts();
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.contactsChangedSub.unsubscribe();
   }
 
 }
