@@ -1,12 +1,38 @@
 @import "../../styles/setup/variables";
+@import "../../styles/setup/typography";
+
+input {
+    all: unset;
+}
 
 .contact-filter-main {
     display: flex;
+    position: sticky;
+    z-index: 1;
 
-    .filter-contacts {
+    #filter-contacts {
         margin: 10px;
-        border-radius: 10px;
-        min-width: 250px;
+        border: 2px solid black;
+        border-radius: 25px;
+        padding: 8px;
+        min-width: 290px;
         min-height: 25px;
+        // background-image: linear-gradient(to right, $clr6, $clr1);
+        background-color: $clr2;
+        box-shadow: 0px 2px;
+
+           ::placeholder {                                               
+                font-family: Grandstander, sans-serif !important;
+                color: $clr4 !important;
+            }
+
+        // ::-webkit-input-placeholder { /* Chrome/Opera/Safari     to fix!! */
+        //     font-family: Grandstander, sans-serif !important;
+        //     color: $clr4 !important;
+        //   }
+        // :host ::ng-deep .e-input::placeholder {
+        //     font-family: Grandstander, sans-serif;
+        //     color: $clr4;
+        // }
     }
 }
