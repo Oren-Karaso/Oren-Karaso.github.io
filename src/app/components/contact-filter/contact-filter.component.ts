@@ -20,16 +20,17 @@ export class ContactFilterComponent implements OnInit {
 
   onSubmit() {
     if (this.searchForm.value) {
-      console.log(this.searchForm.get('name')!.value);
       this.contactService.loadContacts(this.searchForm.get('name')!.value);
     }
   }
-
+  
   onKeyPress(event: any) {
+    console.log(this.searchForm.get('name')!.value);
     if (this.searchForm.value && this.searchForm.value !== '') {
       this.contactService.loadContacts(this.searchForm.get('name')!.value);
-    } else {
-      this.contactService.loadContacts(this.searchForm.get('name')!.value);
+    } 
+    else {
+      this.contactService.loadContacts();
     }
   }
 }

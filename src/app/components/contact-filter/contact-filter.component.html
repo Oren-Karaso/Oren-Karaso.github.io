@@ -2,6 +2,6 @@
     <img src="../../../assets/icons/search_black_24dp.svg" alt="search-contact">
     <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
         <input type="text" id="filter-contacts" formControlName="name" 
-        placeholder="Who are you looking for?" (keypress)="onKeyPress($event)">
+        placeholder="Who are you looking for?" (keydown)="onKeyPress($event)">
     </form>
 </section>
