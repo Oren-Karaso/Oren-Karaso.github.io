@@ -1,4 +1,15 @@
+@import "../../styles/setup/variables";
+@import "../../styles/setup/functions";
+
 .charts-main {
-    width: 400px;
-    height: 400px;
+    margin: auto;
+    width: 90vw;
+    height: 30vh;
+    
+    #line-chart {
+        margin-top: rem(10px);
+        border: 2px solid $clr6;
+        border-radius: rem(25px);
+        box-shadow: 1px 2px 3px 0px;
+    }
 }

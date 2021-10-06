@@ -4,6 +4,7 @@ import { ContactDetailsComponent } from './pages/contact-details/contact-details
 import { ContactEditComponent } from './pages/contact-edit/contact-edit.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
       // { path: ''}
     ]
   },
+  { path: 'charts', component: StatisticsComponent},
 
 ];
 

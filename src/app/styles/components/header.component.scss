@@ -40,13 +40,34 @@
         cursor: pointer;
         list-style-type: none;
 
-        *:first-child {
-            margin-right: rem(8px);
-        }
-
         .navbar-link {
             transition: transform 0.2s;
             margin-left: rem(-15px);
+
+            // [title]:hover:after {
+            //     all: unset;
+            //     content: attr(title);
+            //     opacity: 1;
+            //     transition: all 0.1s ease 0.5s;
+            //     visibility: visible;
+            // }
+
+            // [title]:after {
+            //     all: unset;
+            //     content: attr(title);
+            //     background-color: $clr2;
+            //     color: $clr3;
+            //     position: absolute;
+            //     padding: 1px 5px 2px 5px;
+            //     bottom: -1.6em;
+            //     left: 100%;
+            //     white-space: nowrap;
+            //     box-shadow: 1px 1px 3px #222222;
+            //     opacity: 0;
+            //     border: 1px solid #111111;
+            //     z-index: 5;
+            //     visibility: hidden;
+            // }
 
             :hover {
                 padding-bottom: 7px;
@@ -68,11 +89,7 @@
 
                 img {
                     max-height: rem(48px);
-
-                    // [title]:hover:after {
-                    //     content: attr(title);
-                    //     border-radius: 7px;
-                    // }
+                    margin: rem(15px);
                 }
             }
         }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { User } from 'src/app/modules/user.model';
 import { BitcoinService } from 'src/app/services/bitcoin.service';
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Chart, registerables } from 'chart.js';
+import { BitcoinService } from 'src/app/services/bitcoin.service';
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-statistics',
@@ -7,34 +9,32 @@ import { Chart } from 'chart.js';
   styleUrls: ['../../styles/pages/statistics.component.scss']
 })
 export class StatisticsComponent implements OnInit {
+  marketPrice!: any;
+  marketPriceX!: [];
+  marketPriceY!: [];
+  constructor(private bitcoinService: BitcoinService) { }
 
-  constructor() { }
+  async ngOnInit() {
+    await this.getPrice();
+    this.marketPriceX = this.marketPrice.data.values.map((data: {x: number, y: number}, index: number) => {
+      const timestamp = new Date(data.x);
+      console.log(`timestamp:${index}`, timestamp.toDateString());
+      return timestamp.toLocaleDateString('en-US');
+    });
+    this.marketPriceY = this.marketPrice.data.values.map((data: any) => data.y);
 
-  ngOnInit() {
-    const mmyChart = new Chart('chart1', {
-      type: 'bar',
+    const myChart = new Chart('line-chart', {
+      type: 'line',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: this.marketPriceX,
         datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
+          label: 'Market Price of Last 3 months',
+          data: this.marketPriceY,
+          fill: true,
+          backgroundColor: "#6ed0b3b6",
+          borderColor: '#062720',
+          borderWidth: 1,
+          tension: 0.5
         }]
       },
       options: {
@@ -47,4 +47,8 @@ export class StatisticsComponent implements OnInit {
     });
   }
 
+  async getPrice() {
+    this.marketPrice = await this.bitcoinService.getMarketPrice();
+    // this.marketPriceX = this.marketPrice.values.forEach(value: {} => value.x);
+  }
 }
