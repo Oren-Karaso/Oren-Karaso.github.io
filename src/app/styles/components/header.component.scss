@@ -70,7 +70,7 @@
             // }
 
             :hover {
-                padding-bottom: 7px;
+                padding-bottom: 0;
                 border-bottom: 3px solid $clr3;
                 transform: scale(1.2);
             }
@@ -83,9 +83,9 @@
                     border-bottom: unset;
                 }
 
-                :active {
-                    border-bottom: 3px solid $clr3; //to fix
-                }
+                // :active {
+                //     border-bottom: 3px solid $clr3; //to fix
+                // }
 
                 img {
                     max-height: rem(48px);
