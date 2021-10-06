@@ -39,9 +39,9 @@ export class BitcoinService {
     const storedTrx = this.storageService.load('trx');
 
     if (storedTrx == null) {
-      const confirmedTrx = await axios.get('https://api.blockchain.info/charts/n-transactions?timespan=3months&format=json');
+      const confirmedTrx = await axios.get('https://api.blockchain.info/charts/n-transactions?timespan=3months&format=json&cors=true');
       this.storageService.store('trx', confirmedTrx);
-      return confirmedTrx.data;
+      return confirmedTrx;
     }
     console.log('from storage:', storedTrx);
     return storedTrx;

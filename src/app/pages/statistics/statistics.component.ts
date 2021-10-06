@@ -12,18 +12,29 @@ export class StatisticsComponent implements OnInit {
   marketPrice!: any;
   marketPriceX!: [];
   marketPriceY!: [];
+
+  confirmedTrx!: any;
+  confirmedTrxX!: [];
+  confirmedTrxY!: [];
+
   constructor(private bitcoinService: BitcoinService) { }
 
   async ngOnInit() {
     await this.getPrice();
     this.marketPriceX = this.marketPrice.data.values.map((data: {x: number, y: number}, index: number) => {
-      const timestamp = new Date(data.x);
-      console.log(`timestamp:${index}`, timestamp.toDateString());
+      const timestamp = new Date(1000 * data.x);
       return timestamp.toLocaleDateString('en-US');
     });
     this.marketPriceY = this.marketPrice.data.values.map((data: any) => data.y);
+    
+    await this.getTrx();
+    this.confirmedTrxX = this.confirmedTrx.data.values.map((data: {x: number, y: number}, index: number) => {
+      const timestamp = new Date(1000 * data.x);
+      return timestamp.toLocaleDateString('en-US');
+    });
+    this.confirmedTrxY = this.confirmedTrx.data.values.map((data: any) => data.y);
 
-    const myChart = new Chart('line-chart', {
+    const marketPriceChart = new Chart('market-price', {
       type: 'line',
       data: {
         labels: this.marketPriceX,
@@ -45,10 +56,36 @@ export class StatisticsComponent implements OnInit {
         }
       }
     });
+
+    const confirmedTrxChart = new Chart('confirmed-trx', {
+      type: 'line',
+      data: {
+        labels: this.confirmedTrxX,
+        datasets: [{
+          label: 'Confirmed Transactions per Day of Last 3 months',
+          data: this.confirmedTrxY,
+          fill: true,
+          backgroundColor: "#e1daf6bb",
+          borderColor: '#6f5caf',
+          borderWidth: 1,
+          tension: 0.5
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
   }
 
   async getPrice() {
     this.marketPrice = await this.bitcoinService.getMarketPrice();
-    // this.marketPriceX = this.marketPrice.values.forEach(value: {} => value.x);
+  }
+
+  async getTrx() {
+    this.confirmedTrx = await this.bitcoinService.getConfirmedTransactions();
   }
 }
