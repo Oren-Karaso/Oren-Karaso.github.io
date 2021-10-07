@@ -70,7 +70,7 @@
             // }
 
             :hover {
-                padding-bottom: 0;
+                // padding-bottom: rem(-2px);
                 border-bottom: 3px solid $clr3;
                 transform: scale(1.2);
             }
@@ -88,7 +88,7 @@
                 // }
 
                 img {
-                    max-height: rem(48px);
+                    max-height: rem(40px);
                     margin: rem(15px);
                 }
             }
