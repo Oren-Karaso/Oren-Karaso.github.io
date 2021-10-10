@@ -1,8 +1,11 @@
 .contact-main {
+    width: 95vw;
     .top-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
+        max-width: 100%;
+        margin: auto;
 
         .add-contact {
             height: 48px;

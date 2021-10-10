@@ -1,0 +1,17 @@
+@import "../../styles/setup/variables";
+@import "../../styles/setup/functions";
+
+.contact-list-preview-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    img {
+        border-radius: 50%;
+        box-shadow: 0px 3px 3px 2px #0f0f0f;
+        width: 150px;
+        border: 2px solid rgb(59, 59, 59);
+        background-color: $clr2;
+    }
+}

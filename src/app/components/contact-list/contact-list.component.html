@@ -1,8 +1,5 @@
 <section class="contact-list-main">
-    <div class="contact-list">
-        <div class="contact-preview" *ngFor="let contact of contactList; let i = index">
-            <h3 class="contact-name">{{ contact.name }}</h3>
-            <img class="contact-img" [src]="contact.img" alt="contact-image">
+        <div class="contact-list" *ngFor="let contact of contactList; let i = index">
+            <app-contact-preview class="contact-preview" [contact]="contact"></app-contact-preview>
         </div>
-    </div>
 </section>

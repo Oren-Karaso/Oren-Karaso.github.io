@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactFilterComponent } from './components/contact-filter/contact-filter.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
-import { ContactPreviewComponent } from './components/contact-preview/contact-preview.component';
+import { ContactPreviewComponent } from './components/contact-list/contact-preview/contact-preview.component';
 import { HeaderComponent } from './components/header/header.component';
 import { InputComponent } from './components/input/input.component';
 import { ContactDetailsComponent } from './pages/contact-details/contact-details.component';

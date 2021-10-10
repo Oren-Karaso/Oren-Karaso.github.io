@@ -1,31 +1,24 @@
 @import "../../styles/setup/variables";
 @import "../setup/typography";
+@import "../setup/functions";
 
 .contact-list-main {
     font-family: Grandstander, sans-serif;
+    background-image: linear-gradient(to bottom, $clr6, $clr1);
+    border: 1px solid rgb(59, 59, 59);
+    border-radius: 10px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    z-index: 0;
-
+    
     .contact-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        border-radius: 10px;
-        border: 1px solid rgb(59, 59, 59);
-        // margin-top: 3px;
-        background-image: linear-gradient(to bottom, $clr6, $clr1);
+        margin: rem(8px);
         color: black;
 
         .contact-preview {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             width: rem(150px);
             height: rem(125px);
-            margin: 10px; //to fix
 
             img {
                 border-radius: 50%;
