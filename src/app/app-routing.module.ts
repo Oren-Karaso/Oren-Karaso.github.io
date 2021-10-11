@@ -9,14 +9,9 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomepageComponent },
-  {
-    path: 'contact', component: ContactComponent, children: [
-      // { path: '', component: ChooseContactComponent},
-      { path: ':id', component: ContactDetailsComponent },
-      { path: ':id/edit', component: ContactEditComponent },
-      // { path: ''}
-    ]
-  },
+  { path: 'contact', component: ContactComponent },
+  { path: 'contact/:id', component: ContactDetailsComponent },
+  { path: 'contact/:id/edit', component: ContactEditComponent },
   { path: 'charts', component: StatisticsComponent},
 
 ];

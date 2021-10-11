@@ -1,5 +1,6 @@
 <section class="contact-list-main">
-        <div class="contact-list" *ngFor="let contact of contactList; let i = index">
-            <app-contact-preview class="contact-preview" [contact]="contact"></app-contact-preview>
-        </div>
+    <div class="contact-list" *ngFor="let contact of contactList; let i = index">
+        <app-contact-preview class="contact-preview" [contact]="contact" routerLinkActive="active"
+            [routerLink]="['/contact', contact._id]" (contactChosen)="hideList($event)"></app-contact-preview>
+    </div>
 </section>

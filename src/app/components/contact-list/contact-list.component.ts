@@ -1,7 +1,5 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { Contact } from 'src/app/modules/contact.model';
-
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
@@ -9,11 +7,16 @@ import { Contact } from 'src/app/modules/contact.model';
 })
 export class ContactListComponent implements OnInit {
   @Input() contactList!: Contact[];
+  @Output() isShown = new EventEmitter();
 
   constructor() { }
 
 
   ngOnInit() {
+  }
+
+  hideList(ev: Event) {
+    this.isShown.emit('contact-chosen');
   }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, BehaviorSubject, observable, Subject } from 'rxjs';
+import { Observable, of, BehaviorSubject, observable, Subject, throwError } from 'rxjs';
 import { Contact } from '../modules/contact.model';
 
 const CONTACTS = [
@@ -180,11 +180,12 @@ export class ContactService {
   }
 
   public getContactById(id: string): Observable<Contact> {
+    // debugger
     //mocks the server work
     const contact = this._contactsDb.find(contact => contact._id === id)
-
+    console.log('contact from service:', contact);
     //returns an observable
-    return contact ? of(contact) : Observable.throw(`Contact id ${id} not found!`)
+    return contact ? of(contact) : throwError(`Contact id ${id} not found!`);
   }
 
   public deleteContact(id: string) {
