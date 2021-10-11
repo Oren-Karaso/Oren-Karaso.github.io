@@ -23,14 +23,14 @@ export class StatisticsComponent implements OnInit {
     await this.getPrice();
     this.marketPriceX = this.marketPrice.data.values.map((data: {x: number, y: number}, index: number) => {
       const timestamp = new Date(1000 * data.x);
-      return timestamp.toLocaleDateString('en-US');
+      return timestamp.toLocaleDateString('en-IL');
     });
     this.marketPriceY = this.marketPrice.data.values.map((data: any) => data.y);
     
     await this.getTrx();
     this.confirmedTrxX = this.confirmedTrx.data.values.map((data: {x: number, y: number}, index: number) => {
       const timestamp = new Date(1000 * data.x);
-      return timestamp.toLocaleDateString('en-US');
+      return timestamp.toLocaleDateString('en-IL');
     });
     this.confirmedTrxY = this.confirmedTrx.data.values.map((data: any) => data.y);
 

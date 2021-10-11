@@ -1,0 +1,48 @@
+@import "../setup/functions";
+@import "../setup/typography";
+@import "../setup/variables";
+
+.contact-details-main {
+    font-family: Grandstander, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .buttons-wrapper {
+        display: flex;
+    }
+
+    .contact-details {
+        margin-top: rem(10px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $clr6;
+        border-radius: 10px;
+        padding: rem(10px);
+        box-shadow: 0px 3px 3px 2px #0f0f0f;
+        background-color: $clr1;
+        color: black;
+
+        .contact-name {
+
+        }
+
+        .contact-pohne {
+
+        }
+
+        .contact-email {
+
+        }
+
+        .contact-img {
+            border: 1px solid black;
+            border-radius: 50%;
+            width: rem(300px);
+            background-color: $clr6;
+            box-shadow: 0px 3px 3px 2px #0f0f0f;
+        }
+    }
+}
