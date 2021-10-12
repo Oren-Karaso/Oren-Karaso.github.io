@@ -5,14 +5,29 @@
 .contact-details-main {
     font-family: Grandstander, sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .buttons-wrapper {
+    flex-direction: column;
+    
+    .buttons-wrapper {   // cna't fix with flexbox, used margins
+        margin-right: 35%;
+        margin-left: 35%;
+        margin-top: rem(10px);
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: transform 0.2s;
+        
+        .navigation-link {
+            cursor: pointer;
+
+            :hover {
+                transform: scale(1.2);
+            }
+        }
     }
 
     .contact-details {
+        margin: auto;
+        max-width: 33%;
         margin-top: rem(10px);
         display: flex;
         flex-direction: column;
@@ -26,15 +41,12 @@
         color: black;
 
         .contact-name {
-
         }
 
         .contact-pohne {
-
         }
 
         .contact-email {
-
         }
 
         .contact-img {

@@ -1,5 +1,16 @@
 <section class="contact-details-main">
-    <div class="buttons-wrapper"></div>
+    <div class="buttons-wrapper">
+        <div class="navigation-link" routerLinkActive="active" title="Back to Contacts">
+            <a routerLink="/contact">
+                <img src="../../../assets/icons/back.png" alt="Back to Contact List">
+            </a>
+        </div>
+        <div class="navigation-link" routerLinkActive="active" title="Edit">
+            <a routerLink="/contact/edit/:id?">
+                <img src="../../../assets/icons/edit.png" alt="Edit" class="navigation-link">
+            </a>
+        </div>
+    </div>
     <div class="contact-details">
         <h3 class="contact-name">{{ contact.name }}</h3>
         <h3 class="contact-pohne">{{ contact.phone }}</h3>
