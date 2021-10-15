@@ -12,22 +12,15 @@ export class ContactComponent implements OnInit, OnDestroy {
   contactList!: Contact[];
   contactsChangedSub = new Subscription;
   isShown = true;
-  // params!: Subscription;  
 
   constructor(private contactListService: ContactService, private route: ActivatedRoute) { }
 
 
   ngOnInit() {
-    this.contactsChangedSub = this.contactListService.contactsChanged.subscribe(
+    this.contactsChangedSub = this.contactListService.contacts$.subscribe(
       (contactList: Contact[]) => {
         this.contactList = contactList;
       });
-
-    // this.params = this.route.params.subscribe(params => {
-    //   console.log('params:', params['id']);
-
-    //   return params['id'] ? params['id'] : null;
-    // })
 
     this.contactList = this.contactListService.loadContacts();
   }

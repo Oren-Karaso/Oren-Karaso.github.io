@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, BehaviorSubject, observable, Subject, throwError } from 'rxjs';
 import { Contact } from '../modules/contact.model';
+import { StorageService } from './storage.service';
 
 const CONTACTS = [
   {
@@ -143,8 +144,6 @@ const CONTACTS = [
   providedIn: 'root'
 })
 export class ContactService {
-  contactsChanged = new Subject<Contact[]>();
-
   //mock the server
   private _contactsDb: Contact[] = CONTACTS;
 
@@ -152,14 +151,14 @@ export class ContactService {
   public contacts$ = this._contacts$.asObservable();
 
 
-  constructor() {
+  constructor(private storageService: StorageService) {
+
   }
 
   public loadContacts(name?: string) {
-    let contacts = this._contactsDb;
+    let contacts = this.storageService.load('charleyDB') || this._contactsDb;
     if (name && name !== '') contacts = this._filter(contacts, name)
-    // this._contacts$.next(this._sort(contacts));
-    this.contactsChanged.next(contacts);
+    this._contacts$.next(this._sort(contacts));
     return contacts;
   }
 
@@ -175,25 +174,27 @@ export class ContactService {
     //mock the server work
     const newContact = new Contact(contact.name, contact.email, contact.phone);
     if (newContact.setId) newContact.setId();
-    this._contactsDb.push(newContact)
-    this._contacts$.next(this._sort(this._contactsDb))
+    this._contactsDb.push(newContact);
+    this._contacts$.next(this._sort(this._contactsDb));
+    this.storageService.store('charleyDB', this._contactsDb);
   }
 
   public getContactById(id: string): Observable<Contact> {
     // debugger
     //mocks the server work
     const contact = this._contactsDb.find(contact => contact._id === id)
-    console.log('contact from service:', contact);
+    // console.log('contact from service:', contact);
     //returns an observable
     return contact ? of(contact) : throwError(`Contact id ${id} not found!`);
   }
 
   public deleteContact(id: string) {
     //mocks the server work
-    this._contactsDb = this._contactsDb.filter(contact => contact._id !== id)
+    this._contactsDb = this._contactsDb.filter(contact => contact._id !== id);
 
     // changes the observable data in the service - let all the subscribers know
-    this._contacts$.next(this._contactsDb)
+    this._contacts$.next(this._contactsDb);
+    this.storageService.store('charleyDB', this._contactsDb);
   }
 
   public saveContact(contact: Contact) {
@@ -205,6 +206,7 @@ export class ContactService {
     this._contactsDb = this._contactsDb.map(c => contact._id === c._id ? contact : c)
     // change the observable data in the service - let all the subscribers know
     this._contacts$.next(this._sort(this._contactsDb))
+    this.storageService.store('charleyDB', this._contactsDb);
   }
 
 
@@ -218,7 +220,7 @@ export class ContactService {
   private _filter(contacts: Contact[], term: string) {
     term = term.toLowerCase();
     return contacts.filter(contact => {
-      return contact.name.toLowerCase().includes(term); 
+      return contact.name.toLowerCase().includes(term);
       // return contact.name.toLocaleLowerCase().includes(term) ||
       //   contact.phone.toLocaleLowerCase().includes(term) ||
       //   contact.email.toLocaleLowerCase().includes(term)

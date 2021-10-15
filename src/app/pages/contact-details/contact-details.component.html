@@ -1,12 +1,12 @@
 <section class="contact-details-main">
     <div class="buttons-wrapper">
-        <div class="navigation-link" routerLinkActive="active" title="Back to Contacts">
+        <div class="navigation-link back" routerLinkActive="active" title="Back to Contacts">
             <a routerLink="/contact">
                 <img src="../../../assets/icons/back.png" alt="Back to Contact List">
             </a>
         </div>
-        <div class="navigation-link" routerLinkActive="active" title="Edit">
-            <a routerLink="/contact/edit/:id?">
+        <div class="navigation-link edit" routerLinkActive="active" title="Edit">
+            <a [routerLink]="['/contact', contact._id, 'edit']">
                 <img src="../../../assets/icons/edit.png" alt="Edit" class="navigation-link">
             </a>
         </div>

@@ -18,13 +18,10 @@ export class ContactDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     let id = this.route.snapshot.params['id'];
-    console.log(id);
     
     this.getByIdSubscription = this.contactsService.getContactById(id).subscribe(
       (contact: Contact) => {
       this.contact = contact;
-      console.log(contact);
-      
     });
 
     this.paramsSubscription = this.route.params.subscribe(

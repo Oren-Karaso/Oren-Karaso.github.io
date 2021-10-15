@@ -6,16 +6,15 @@
     font-family: Grandstander, sans-serif;
     display: flex;
     flex-direction: column;
-    
-    .buttons-wrapper {   // cna't fix with flexbox, used margins
-        margin-right: 35%;
-        margin-left: 35%;
+    justify-content: center;
+    align-items: center;
+
+    .buttons-wrapper {
+        display: flex;
         margin-top: rem(10px);
         display: flex;
-        justify-content: space-between;
-        align-items: center;
         transition: transform 0.2s;
-        
+
         .navigation-link {
             cursor: pointer;
 
@@ -26,8 +25,9 @@
     }
 
     .contact-details {
-        margin: auto;
-        max-width: 33%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-top: rem(10px);
         display: flex;
         flex-direction: column;
