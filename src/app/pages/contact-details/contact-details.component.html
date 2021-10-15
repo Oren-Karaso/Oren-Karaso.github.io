@@ -12,9 +12,9 @@
         </div>
     </div>
     <div class="contact-details">
-        <h3 class="contact-name">{{ contact.name }}</h3>
-        <h3 class="contact-pohne">{{ contact.phone }}</h3>
-        <h3 class="contact-email">{{ contact.email }}</h3>
         <img class="contact-img" [src]="contact.img" alt="contact-image">
+        <h3 class="contact-name"><span>Name:</span> {{ contact.name }}</h3>
+        <h3 class="contact-email"><span>Email:</span> {{ contact.email }}</h3>
+        <h3 class="contact-pohne"><span>Phone:</span> {{ contact.phone }}</h3>
     </div>
 </section>
