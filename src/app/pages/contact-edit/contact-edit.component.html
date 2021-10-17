@@ -1,37 +1,47 @@
 <section class="contact-edit-main">
-    <img [src]="contact.img" alt="" class="contact-image">
-    <form [formGroup]="contactEditForm" (ngSubmit)="onSubmit()">
-        <div formGroupName="contactData">
-            <div class="form-group">
-                <label for="contactData.username">Username</label>
-                <input type="text" id="username" formControlName="username" class="edit-form"
-                    placeholder="Enter a username">
-                <span *ngIf="contactEditForm.get('contactData.username')?.invalid 
-                      && contactEditForm.get('contactData.username')?.touched" class="input-validation">
-                    Username cannot be empty
-                </span>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" id="contact-email" formControlName="email" class="edit-form"
-                    placeholder="Enter an email address">
-                <span *ngIf="contactEditForm.get('contactData.email')?.invalid 
-                && contactEditForm.get('contactData.email')?.touched" class="input-validation">
-                    Please insert a valid
-                    email
-                </span>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="text" id="contact-phone" formControlName="phone" class="edit-form"
-                    placeholder="Enter a phone number">
-                <span *ngIf="contactEditForm.get('contactData.phone')?.invalid 
-                && contactEditForm.get('contactData.phone')?.touched" class="input-validation">
-                    Please insert a valid
-                    phone bnumber
-                </span>
-            </div>
+    <div class="buttons-wrapper">
+        <div class="navigation-link back" routerLinkActive="active" title="Back to Contact Details">
+            <a [routerLink]="['/contact', contact._id]">
+                <img src="../../../assets/icons/back.png" alt="Back to Contact Details">
+            </a>
         </div>
-    </form>
-    <button type="submit" class="contact-save" (click)="onSubmit()" [disabled]="contactEditForm.invalid">Save</button>
+    </div>
+    <div class="contact-card">
+        <img [src]="contact.img" alt="" class="contact-image">
+        <form [formGroup]="contactEditForm" (ngSubmit)="onSubmit()">
+            <div formGroupName="contactData">
+                <div class="form-group">
+                    <label for="contactData.username">Username</label>
+                    <input type="text" id="username" formControlName="username" class="edit-form"
+                        placeholder="Enter a username">
+                    <span *ngIf="contactEditForm.get('contactData.username')?.invalid 
+                          && contactEditForm.get('contactData.username')?.touched" class="input-validation">
+                        Username cannot be empty
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="contact-email" formControlName="email" class="edit-form"
+                        placeholder="Enter an email address">
+                    <span *ngIf="contactEditForm.get('contactData.email')?.invalid 
+                    && contactEditForm.get('contactData.email')?.touched" class="input-validation">
+                        Please insert a valid
+                        email
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" id="contact-phone" formControlName="phone" class="edit-form"
+                        placeholder="Enter a phone number">
+                    <span *ngIf="contactEditForm.get('contactData.phone')?.invalid 
+                    && contactEditForm.get('contactData.phone')?.touched" class="input-validation">
+                        Please insert a valid
+                        phone bnumber
+                    </span>
+                </div>
+            </div>
+        </form>
+        <button type="submit" class="contact-save" (click)="onSubmit()"
+            [disabled]="contactEditForm.invalid">Save</button>
+    </div>
 </section>
