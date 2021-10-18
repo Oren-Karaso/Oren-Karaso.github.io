@@ -1,10 +1,7 @@
 export class Contact {
 
-    constructor(public _id?: string, public name: string = '',
-        public email: string = '', public phone: string = '',
-        public img: string = `https://robohash.org/${name}.png?set=set5`) {
-
-    }
+    constructor(public _id?: string, public name: string = '', public email: string = '', public phone: string = '',
+     public img: string = `https://robohash.org/${name}.png?set=set5`) {}
 
     setId?(length = 24) {
         let txt = '';

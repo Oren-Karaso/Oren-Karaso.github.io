@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'home', component: HomepageComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'contact/:id', component: ContactDetailsComponent },
-  { path: 'contact/:id/edit', component: ContactEditComponent },
+  { path: 'contact/:id?/edit', component: ContactEditComponent },
   { path: 'charts', component: StatisticsComponent},
 
 ];

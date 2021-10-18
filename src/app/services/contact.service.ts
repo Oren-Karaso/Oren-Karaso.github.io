@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, BehaviorSubject, observable, Subject, throwError } from 'rxjs';
+import { Observable, of, BehaviorSubject, throwError } from 'rxjs';
 import { Contact } from '../modules/contact.model';
 import { StorageService } from './storage.service';
 
@@ -172,15 +172,22 @@ export class ContactService {
 
   private _addContact(contact: Contact) {
     //mock the server work
-    const newContact = new Contact(contact.name, contact.email, contact.phone);
+    const newContact = new Contact;  // how to use with the class constructor?
+    newContact.name = contact.name;
+    newContact.email = contact.email;
+    newContact.phone = contact.phone;
+
     if (newContact.setId) newContact.setId();
+
+    newContact.img = `https://robohash.org/${contact.name}.png?set=set5`;
+    console.log('form service:', newContact);
+
     this._contactsDb.push(newContact);
     this._contacts$.next(this._sort(this._contactsDb));
     this.storageService.store('charleyDB', this._contactsDb);
   }
 
   public getContactById(id: string): Observable<Contact> {
-    // debugger
     //mocks the server work
     const contact = this._contactsDb.find(contact => contact._id === id)
     // console.log('contact from service:', contact);

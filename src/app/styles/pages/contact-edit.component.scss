@@ -8,8 +8,20 @@
     align-items: center;
 
     .buttons-wrapper {
+        display: flex;
         margin-top: rem(10px);
+        display: flex;
+        transition: transform 0.2s;
+
+        .navigation-link {
+            cursor: pointer;
+
+            :hover {
+                transform: scale(1.2);
+            }
+        }
     }
+    
     .contact-card {
         font-family: Grandstander, sans-serif;
         display: flex;

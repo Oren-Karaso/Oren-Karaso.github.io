@@ -1,13 +1,18 @@
 <section class="contact-edit-main">
     <div class="buttons-wrapper">
         <div class="navigation-link back" routerLinkActive="active" title="Back to Contact Details">
-            <a [routerLink]="['/contact', contact._id]">
+            <a *ngIf="editMode; else newMode" [routerLink]="['/contact', contact._id]">
                 <img src="../../../assets/icons/back.png" alt="Back to Contact Details">
             </a>
+            <ng-template #newMode>
+                <a routerLink="/contact">
+                    <img src="../../../assets/icons/back.png" alt="Back to Contacts">
+                </a>
+            </ng-template>
         </div>
     </div>
     <div class="contact-card">
-        <img [src]="contact.img" alt="" class="contact-image">
+        <img *ngIf="editMode" [src]="contact.img" alt="" class="contact-image">
         <form [formGroup]="contactEditForm" (ngSubmit)="onSubmit()">
             <div formGroupName="contactData">
                 <div class="form-group">
@@ -41,7 +46,8 @@
                 </div>
             </div>
         </form>
-        <button type="submit" class="contact-save" (click)="onSubmit()"
-            [disabled]="contactEditForm.invalid">Save</button>
+        <button type="submit" class="contact-save" (click)="onSubmit()" [disabled]="contactEditForm.invalid">
+            Save
+        </button>
     </div>
 </section>
