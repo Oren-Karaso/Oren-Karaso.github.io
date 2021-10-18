@@ -4,16 +4,15 @@
 .contact-edit-main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
     .buttons-wrapper {
         display: flex;
+        align-items: center;
         margin-top: rem(10px);
-        display: flex;
         transition: transform 0.2s;
 
         .navigation-link {
+            margin-left: rem(10px);
             cursor: pointer;
 
             :hover {
@@ -30,13 +29,11 @@
         align-items: center;
         border: 1px solid $clr6;
         border-radius: 10px;
-        // margin: auto;
         margin: rem(10px);
         padding: rem(10px);
         color: black;
         background-image: linear-gradient(to bottom, $clr6, $clr1);
         box-shadow: 0px 3px 3px 2px #0f0f0f;
-        // width: fit-content;
 
         .contact-image {
             margin-top: rem(10px);
@@ -79,7 +76,7 @@
             font-family: Grandstander, sans-serif;
             padding: rem(5px);
             margin-bottom: rem(10px);
-            width: rem(80px);
+            width: fit-content;
             border-radius: 25px;
             background-color: $clr2;
             color: $clr6;

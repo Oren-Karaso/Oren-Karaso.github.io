@@ -180,7 +180,6 @@ export class ContactService {
     if (newContact.setId) newContact.setId();
 
     newContact.img = `https://robohash.org/${contact.name}.png?set=set5`;
-    console.log('form service:', newContact);
 
     this._contactsDb.push(newContact);
     this._contacts$.next(this._sort(this._contactsDb));
@@ -195,10 +194,9 @@ export class ContactService {
     return contact ? of(contact) : throwError(`Contact id ${id} not found!`);
   }
 
-  public deleteContact(id: string) {
+  public deleteContact(id: string | undefined) {
     //mocks the server work
     this._contactsDb = this._contactsDb.filter(contact => contact._id !== id);
-
     // changes the observable data in the service - let all the subscribers know
     this._contacts$.next(this._contactsDb);
     this.storageService.store('charleyDB', this._contactsDb);

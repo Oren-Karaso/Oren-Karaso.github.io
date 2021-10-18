@@ -2,7 +2,7 @@
     <div class="top-wrapper">
         <app-contact-filter></app-contact-filter>
         <img class="add-contact" src="../../../assets/icons/plus.png" alt="add-contact" title="Add Cotact" 
-        routerLink="/contact/:id?/edit">
+        routerLink="/contact/edit/:id?">
     </div>
     <app-contact-list [contactList]="contactList" (isShown)="onHideList()"></app-contact-list>
 </section>

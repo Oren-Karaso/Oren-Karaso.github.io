@@ -6,9 +6,12 @@
             </a>
         </div>
         <div class="navigation-link edit" routerLinkActive="active" title="Edit">
-            <a [routerLink]="['/contact', contact._id, 'edit']">
+            <a [routerLink]="['/contact/edit', contact._id]">
                 <img src="../../../assets/icons/edit.png" alt="Edit" class="navigation-link">
             </a>
+        </div>
+        <div class="navigation-link delete"  title="Delete Contact" (click)="onDelete()">
+                <img src="../../../assets/icons/delete.png" alt="Edit" class="navigation-link">
         </div>
     </div>
     <div class="contact-details">

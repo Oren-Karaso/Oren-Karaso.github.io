@@ -12,7 +12,10 @@
         </div>
     </div>
     <div class="contact-card">
-        <img *ngIf="editMode" [src]="contact.img" alt="" class="contact-image">
+        <img *ngIf="editMode; else defaultImg" [src]="contact.img" alt="" class="contact-image">
+        <ng-template #defaultImg>
+            <img src="https://robohash.org/New-Contact.png?set=set5" alt="" class="contact-image">
+        </ng-template>
         <form [formGroup]="contactEditForm" (ngSubmit)="onSubmit()">
             <div formGroupName="contactData">
                 <div class="form-group">
@@ -47,7 +50,7 @@
             </div>
         </form>
         <button type="submit" class="contact-save" (click)="onSubmit()" [disabled]="contactEditForm.invalid">
-            Save
+            {{editMode? 'Update': 'Add Contact'}}
         </button>
     </div>
 </section>
