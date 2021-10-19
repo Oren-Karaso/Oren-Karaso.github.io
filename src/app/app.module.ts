@@ -14,6 +14,7 @@ import { ContactEditComponent } from './pages/contact-edit/contact-edit.componen
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
     ContactPreviewComponent,
     HeaderComponent,
     InputComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

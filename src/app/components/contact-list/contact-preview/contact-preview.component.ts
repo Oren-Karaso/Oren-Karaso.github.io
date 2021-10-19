@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import { Contact } from 'src/app/modules/contact.model';
+import { Contact } from 'src/app/models/contact.model';
 @Component({
   selector: 'app-contact-preview',
   templateUrl: './contact-preview.component.html',

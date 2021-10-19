@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/modules/user.model';
+import { User } from 'src/app/models/user.model';
 import { BitcoinService } from 'src/app/services/bitcoin.service';
 
 @Component({

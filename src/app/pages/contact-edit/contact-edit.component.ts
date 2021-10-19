@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Contact } from 'src/app/modules/contact.model';
+import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
@@ -36,7 +36,6 @@ export class ContactEditComponent implements OnInit, OnDestroy {
         }),
       });
     } else {
-      console.log('else');
 
       this.contactEditForm = new FormGroup({
         'contactData': new FormGroup({

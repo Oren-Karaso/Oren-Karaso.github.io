@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, BehaviorSubject, throwError } from 'rxjs';
-import { Contact } from '../modules/contact.model';
+import { Contact } from '../models/contact.model';
 import { StorageService } from './storage.service';
 
 const CONTACTS = [

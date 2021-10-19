@@ -1,23 +1,30 @@
 import { Injectable } from '@angular/core';
-import { User } from '../modules/user.model';
+import { Contact } from '../models/contact.model';
+import { User } from '../models/user.model';
+import { ContactService } from './contact.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private user: User = {
-    name: 'Ochoa Hyde',
-    coins: 100,
-    moves: [],
-    image: 'https://robohash.org/Ochoa-Hyde.png?set=set5'
-  }
+  private users!: User[] 
+  // = [{
+  //   name: 'Oren Karaso',
+  //   coins: 100,
+  //   moves: [],
+  //   image: 'https://robohash.org/Oren-Karaso.png?set=set5'
+  // }]  add isLoggedIn
 
-  constructor() { }
+  constructor(private contactService: ContactService) { }
 
   getUser() {
-    return this.user;
+    const loggedInUser = this.users.find(user => user.isLoggedIn);
+    return loggedInUser ? loggedInUser : null;
   }
 
-  addUser(user: User) {
+  signUser(user: User) {
+  }
+
+  addTransaction(contact: Contact, amount: number) {
   }
 }

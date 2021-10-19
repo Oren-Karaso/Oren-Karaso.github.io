@@ -1,0 +1,24 @@
+<section class="login-main">
+    <form [formGroup]="loginForm">
+        <div formGroupName="userData">
+            <div class="form-group">
+                <label for="userData.username">Username</label>
+                <input type="text" id="username" formControlName="username" class="login-form"
+                    placeholder="Enter a username">
+                <span *ngIf="loginForm.get('userData.username')?.invalid 
+                      && loginForm.get('userData.username')?.touched" class="input-validation">
+                    Username cannot be empty
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" id="user-password" formControlName="password" class="login-form"
+                    placeholder="Enter a 8 digits\characters password">
+                <span *ngIf="loginForm.get('userData.password')?.invalid 
+                && loginForm.get('userData.password')?.touched" class="input-validation">
+                    Please insert a valid password
+                </span>
+            </div>
+        </div>
+    </form>
+</section>
